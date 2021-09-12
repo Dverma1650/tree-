@@ -1,0 +1,35 @@
+class Solution
+{
+    public:
+    //Function to check whether a Binary Tree is BST or not.
+    int maximum(Node*root)
+    {
+        if(root==NULL)
+         return INT_MIN;
+        else if(root->right==NULL)
+         return root->data;
+        else
+          return maximum(root->right);
+    }
+     int minimum(Node*root)
+    {
+        if(root==NULL)
+         return INT_MAX;
+        else if(root->left==NULL)
+         return root->data;
+        else
+          return maximum(root->left);
+    }
+    bool isBST(Node* root) 
+    {
+        // Your code here
+        if(root==NULL)
+         return true;
+        int leftmax=maximum(root->left);
+        int rightmin=minimum(root->right);
+        if(leftmax<root->data && rightmin>=root->data)
+         return isBST(root->left)&&isBST(root->right);
+        else 
+         return false;
+    }
+};
