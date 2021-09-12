@@ -1,0 +1,19 @@
+int flag=1;
+int height(Node *root)
+{
+   if(!root)
+     return NULL;
+   int l=height(root->left);
+   int r=height(root->right);
+   if(abs(l-r)>1) flag=0;
+   return max(l,r)+1;
+}
+
+//Function to check whether a binary tree is balanced or not.
+bool isBalanced(Node *root)
+{
+    //  Your Code here
+    flag=1;
+    height(root);
+    return flag;
+}
