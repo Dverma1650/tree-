@@ -1,0 +1,22 @@
+vector<int> inOrder(Node* root)
+{
+    //code here
+    Node* temp=root;
+    stack<Node* >s;
+    vector<int>v;
+   
+    while(temp!=NULL || !s.empty())
+    {
+        while(temp!=NULL)// this part for left subtree
+        {
+            s.push(temp);
+            temp=temp->left;
+        }
+        temp=s.top();
+        s.pop();
+        v.push_back(temp->data); 
+       // this for right subtree
+       temp=temp->right;
+    }
+    return v;
+}
